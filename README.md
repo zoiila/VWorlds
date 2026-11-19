@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/vworld-01-hero.svg" alt="VWorld by VACK STUDIO, with the original Mini Zoiila hanging pose instead of a schematic diagram" width="100%" />
+  <img src="assets/vworld-01-hero.svg" alt="VWorld by VACK STUDIO, with a small original Mini Zoiila peeking over the banner edge" width="100%" />
 </p>
 
 # VWorld <img src="assets/emoji/mini-zoiila-wave.png" alt="Mini Zoiila waving" width="29" height="29" />
