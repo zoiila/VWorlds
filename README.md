@@ -124,7 +124,9 @@ Want to explore VWorld beyond the showcase? These **documented examples** demons
 
 Copyright © 2026 VACK STUDIO. All rights reserved.
 
-VWorld is a private-distribution project. Source code, installable builds and customer release files are not included in this public presentation repository. Third-party components retain their own licensing terms.
+VWorld, its original documentation and artwork are proprietary to VACK STUDIO. Redistribution, modification, resale or publication requires prior written authorization. See the full [LICENSE](LICENSE).
+
+Source code, installable builds and customer release files are not included in this public showcase. Third-party components and assets retain their own rights and licenses.
 
 The example Grass Block in these diagrams uses Minecraft Java 26.2's original block textures; see [asset attribution](assets/MINECRAFT-ASSET-SOURCES.md).
 
