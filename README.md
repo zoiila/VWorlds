@@ -1,96 +1,98 @@
 <p align="center">
-  <img src="assets/vworld-01-hero.svg" alt="VWorld by VACK STUDIO, with a small original Mini Zoiila peeking over the banner edge" width="100%" />
+  <img src="assets/vworld-01-hero.svg" alt="VWorld by VACK STUDIO, with the original Mini Zoiila peeking over the banner edge" width="100%" />
 </p>
 
 # VWorld <img src="assets/emoji/mini-zoiila-wave.png" alt="Mini Zoiila waving" width="29" height="29" />
 
-**Build once. Give each game its own world.**
+**Build once. Give every match its own world.**
 
-Think of the arena you've spent hours creating. Now imagine using that same build for separate minigame sessions **without handing every match the same world**. That's the idea behind **VWorld** by **VACK STUDIO**: a home for your existing Paper worlds, plus a schematic-based system for temporary, independently owned game worlds.
+A good Minecraft arena takes time to build. You shouldn't have to start over each time another minigame needs it.
 
-A source template stays a source. Each requested session has its own world and lifecycle. When a match is finished, VWorld can release the temporary instance without treating the original creation as disposable.
+**VWorld** by **VACK STUDIO** brings everyday Paper world management together with reusable schematic templates. Keep your original build safe, let each game request an **independent temporary world**, and release that instance when its session is finished. **One creation, many possibilities — without sharing one live arena between matches.**
 
 > [!IMPORTANT]
-> **Private distribution.** This repository is the public VWorld showcase. The development source and installable builds remain private to VACK STUDIO. No public JAR or source-code download is provided here.
+> **Private distribution.** VWorld is proprietary software by VACK STUDIO. This public repository is a project showcase; the source, integration documents and installable builds remain private. There is no public plugin download here.
 
-## How does one template power different games? <img src="assets/emoji/mini-zoiila-thinking.png" alt="Mini Zoiila thinking" width="24" height="24" />
+## From one build to many matches <img src="assets/emoji/mini-zoiila-thinking.png" alt="Mini Zoiila thinking" width="25" height="25" />
 
-<p align="center">
-  <img src="assets/vworld-02-lifecycle.svg" alt="Illustrated VWorld workflow: register a schematic, preview the build, prepare a temporary world, then release the owned session" width="100%" />
-</p>
-
-**One build. More than one session.** VWorld keeps the source schematic separate from the worlds it prepares for matches. Here's what the documented workflow looks like:
-
-| Step | What happens |
-| --- | --- |
-| **Register a template** | Import a supported Sponge **`.schem` v2/v3** supplied through the server's file manager. VWorld validates it and records a reusable template ID. |
-| **Take a preview** | Inspect the build in a temporary preview world, then define relative bounds and named positions such as spawn and spectator points. |
-| **Prepare a match world** | A game plugin can request an independent temporary world through VWorld's lease API. Sessions have distinct world identities. |
-| **Release when finished** | VWorld evacuates occupants, unloads and cleans up only its owned instance when safe. If cleanup fails, it keeps the record for investigation or retry. |
-
-You can build a map once and *reuse the schematic* without asking every live match to share one world. Different game plugins still control their own gameplay, inventories and player return behavior.
-
-## Your original creations deserve protection
+**What if two games want the same map?** VWorld treats the saved `.schem` as a source, not as the live match. Each game can request its own temporary world through the provider API.
 
 <p align="center">
-  <img src="assets/vworld-03-ownership.svg" alt="Illustration showing a protected source template and a separate match-owned temporary world" width="100%" />
+  <img src="assets/vworld-02-lifecycle.svg" alt="Four-step VWorld schematic lifecycle: register, preview, lease, release" width="100%" />
 </p>
 
-**The temporary world may come and go. Your source shouldn't.** VWorld tracks ownership rather than deleting folders simply because they look temporary. It checks schematic integrity before providing a session and preserves the original source files.
-
-| VWorld protects | Why it matters |
+| Stage | What happens |
 | --- | --- |
-| **Source templates** | Registered `.schem` files aren't overwritten or deleted by the session cleanup flow. |
-| **Existing server worlds** | Protected or unowned worlds are outside automatic temporary-world cleanup. |
-| **Interrupted sessions** | Unsafe evacuation, unloading or deletion leaves an inspectable session instead of silently discarding ownership. |
+| **01 · Register** | Add a supported Sponge `.schem` v2/v3 from the server's file manager; VWorld validates it and records a template ID. |
+| **02 · Preview** | Inspect the build in a temporary world. Save its bounds and important positions, such as spawn and spectator points. |
+| **03 · Lease** | An integrating minigame requests its own temporary world. Each session has a separate world identity. |
+| **04 · Release** | VWorld safely evacuates occupants, unloads and cleans up the owned world. Failed cleanup stays tracked for inspection or retry. |
 
-VWorld owns the *world lifecycle*, not your minigame's inventory system or match rules. The game integration remains responsible for players' saved state and their return to its own lobby.
+**The boundary matters:** VWorld manages worlds and leases. Your minigame manages gameplay, inventories and the player's return to its lobby.
 
-## More than a template manager
+## Keep the original. Release the temporary. <img src="assets/emoji/mini-zoiila-peek.png" alt="Mini Zoiila peeking" width="25" height="25" />
+
+Your arena is more than a disposable folder. VWorld separates **registered source schematics** from **temporary match-owned worlds** — so cleanup knows what it actually owns.
 
 <p align="center">
-  <img src="assets/vworld-04-control.svg" alt="Illustrated VWorld world-management features: world creation, imports, teleports, properties, and protected lifecycle actions" width="100%" />
+  <img src="assets/vworld-03-ownership.svg" alt="Registered schematic sources are kept separate from temporary match-owned worlds" width="100%" />
 </p>
 
-VWorld also gives administrators the everyday tools to handle worlds already on the server. There's no need to prepare a schematic just to create a normal world, set its spawn or change its weather.
-
-| What you manage | What VWorld offers |
+| Protected by design | Why it matters |
 | --- | --- |
-| **Worlds** | Create, import, load, unload and fork unloaded source worlds |
-| **Player routes** | Teleport between worlds and set world spawns |
-| **World settings** | PvP, auto-saving, mob spawning, difficulty, time, weather and gamerules |
-| **Safety controls** | Explicit confirmation for deletion and restrictions on protected worlds |
+| **Your source build** | VWorld checks the schematic before use; releasing a session doesn't overwrite or delete the source file. |
+| **Your other worlds** | Unknown, unowned and protected worlds aren't automatically removed as temporary sessions. |
+| **Your recovery options** | An unsafe unload, evacuation or deletion leaves the owned session available for inspection and retry. |
 
-Its familiar `/vworld` and `/vw` command entry points remain available. **WorldEdit is only required for the schematic provider**, not the original whole-world management features.
+The result is a cleaner separation between what you want to **keep** and what a game is allowed to **release**.
 
-## Preparing a better VWorld template
+## More than a minigame tool <img src="assets/emoji/mini-zoiila-sit.png" alt="Mini Zoiila sitting" width="25" height="25" />
 
-**Mini Zoiila's setup tips** <img src="assets/emoji/mini-zoiila-teacher.png" alt="Mini Zoiila sharing a helpful setup tip" width="24" height="24" />
+Need to create a fresh world? Bring an existing one online? Change the weather before an event? VWorld keeps those familiar administrative tools in the same place.
 
-Before you give a build to a minigame, open it in a preview and treat it like a real player would: check the usable building space, walk the spawn points, and make sure the spectator position is outside the active area. These small details make game worlds easier to reuse.
+<p align="center">
+  <img src="assets/vworld-04-control.svg" alt="World administration: create, import, load, unload, teleport, configure and protect" width="100%" />
+</p>
 
-A few habits worth keeping:
-
-- **Prepare safe preview entry.** Use Creative or Spectator: a preview may contain void, and Survival entry is deliberately refused.
-- **Check the actual source.** Use supported Sponge v2/v3 `.schem` files. Don't assume legacy `.schematic`, `.litematic` or entity-bearing schematics will work.
-- **Keep a safe exit available.** Configure an existing loaded evacuation world for temporary-world cleanup when appropriate.
-- **Protect your work.** Back up your original worlds and settings; don't remove temporary ownership markers manually to force a cleanup.
-
-## Compatibility and availability
-
-The documented **VWorld 1.1.0-preview.3** targets:
-
-| Component | Target |
+| Your world, your rules | Available tools |
 | --- | --- |
-| Server | **Paper 26.2** (build 130 used for isolated checks) |
+| **Create & manage** | Create, import, load, unload and fork worlds. |
+| **Move players** | Teleport between worlds and set spawn points. |
+| **Set the scene** | Configure PvP, difficulty, mob spawning, time, weather and gamerules. |
+| **Protect the important stuff** | Confirm deletion and respect protected-world restrictions. |
+
+The familiar **`/vworld`** and **`/vw`** commands remain. Regular world management also works without WorldEdit; **the schematic provider requires it**.
+
+## Mini Zoiila's setup tips <img src="assets/emoji/mini-zoiila-teacher.png" alt="Mini Zoiila teaching" width="25" height="25" />
+
+**Before the first match, take a walk through your map like a player would.** A beautiful build is only the beginning — your game also needs sensible boundaries, safe spawn points and a clear place for spectators.
+
+| Check | What to look for |
+| --- | --- |
+| **Spawn & spectate** | Preview the map, check the playable bounds and save the named points your game needs. |
+| **Enter safely** | Use **Creative or Spectator** for previews. Void space can be present, so Survival preview entry is refused. |
+| **Choose the right file** | Use supported Sponge `.schem` v2/v3. Legacy `.schematic`, `.litematic` and entity-bearing schematics aren't supported in this preview. |
+| **Plan the exit** | Keep a loaded, safe evacuation world available and back up your worlds before upgrades. Never remove ownership markers to force cleanup. |
+
+**Tip from Mini Zoiila:** *Preview the whole player journey, not just the build.* It's the little details that make a reusable arena feel ready for every new match.
+
+## Requirements & availability
+
+The documented target is **VWorld 1.1.0-preview.3**.
+
+| Component | Requirement or status |
+| --- | --- |
+| Server | **Paper 26.2** — build 130 used in isolated validation |
 | Java | **Java 25** |
-| Schematic provider | **WorldEdit 7.4.6**, installed separately |
-| Supported schematic input | **Sponge `.schem` v2/v3**, within the documented limits |
+| Schematic provider | Official **WorldEdit 7.4.6**, installed separately |
+| Supported templates | Sponge **`.schem` v2/v3**, subject to size and content limits |
 | Other implementations | **Leaf, Folia and FAWE not verified** |
 
-The preview has undergone isolated build and provider checks, but **real-player acceptance, complete GUI checks and production profiling remain pending**. That's a preview limitation, not a feature claim.
+This is a **development preview**, not a production-readiness claim. Isolated builds and provider tests were completed, but real-player acceptance, complete client UI checks and production performance profiling remain outstanding.
 
-**VWorld is privately distributed by VACK STUDIO.** The [historical release notes](RELEASE_NOTES.md) describe an earlier 1.0.0 version, not a public download of this preview. For product questions or licensing, use the studio's official links below.
+## Get VWorld
+
+**VWorld is privately distributed by VACK STUDIO.** For product questions or licensing, use the studio links below. The [historical release notes](RELEASE_NOTES.md) cover an earlier 1.0.0 iteration, not a download for this preview.
 
 ---
 
