@@ -34,6 +34,8 @@ request.ready().whenComplete((lease, failure) -> {
 });
 ```
 
+**Explicit cleanup calls:** use `request.cancel()` when setup is abandoned or a request is still pending; once a lease is available, use `lease.release()` on match finish, abort or disable. Both are idempotent. The example deliberately leaves game-specific restoration and generation checks to the consumer.
+
 The API above is the documented **Request → Lease** flow. A request timeout (1–600 seconds) covers preparation, **not** game length. `max-lease-seconds` is an emergency cleanup age, **not** a countdown or renewal mechanism.
 
 ## Ownership contract
