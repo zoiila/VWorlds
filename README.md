@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/vworld-01-hero.svg" alt="VWorld — one reusable source schematic, two independent temporary worlds, and a VACK STUDIO color palette" width="100%" />
+  <img src="assets/vworld-01-hero.svg" alt="VWorld by VACK STUDIO, with the original Mini Zoiila hanging pose instead of a schematic diagram" width="100%" />
 </p>
 
 # VWorld <img src="assets/emoji/mini-zoiila-wave.png" alt="Mini Zoiila waving" width="29" height="29" />
