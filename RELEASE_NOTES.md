@@ -1,3 +1,5 @@
+> **Historical archive:** These notes describe the earlier Vack Worlds 1.0.0 project, not the currently presented VWorld 1.1.0-preview.3. The public repository does **not** contain or distribute the JAR mentioned in the historical notes. See [README](README.md) for the current public project overview.
+
 # Vack Worlds v1.0.0 | Vack Studio
 
 First release: world creation and import, per-world properties, on-demand loading, asynchronous template forks, protected deletion, spawn and teleport, a minigame Java service, and English/Arabic UUID-persisted command feedback.

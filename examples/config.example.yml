@@ -1,0 +1,35 @@
+# VWorld example configuration — 1.1.0-preview.3
+#
+# Reference example based on the documented VWorld defaults for Paper 26.2.
+# Review the generated plugins/VWorld/config.yml before making changes.
+# This is NOT a complete replacement for files on an existing installation.
+
+# Existing worlds listed here are protected from VWorld unload/fork/delete.
+protected-worlds:
+  - world
+  - world_nether
+  - world_the_end
+
+# Applied when NEW worlds are created or imported through VWorld.
+# Changing these does not rewrite existing records in worlds.yml.
+default:
+  pvp: false
+  difficulty: NORMAL
+  autosave: true
+  auto-load: true
+  spawn-monsters: false
+  spawn-animals: false
+  keep-spawn-in-memory: false
+
+# Schematic provider: requires a separately installed WorldEdit 7.4.6.
+templates:
+  max-file-bytes: 5242880       # Compressed .schem file: 5 MiB.
+  max-inflated-bytes: 33554432  # Inflated NBT: 32 MiB.
+  max-volume: 262144           # Maximum blocks per schematic.
+  max-templates: 100           # Registered template count.
+  max-sessions: 8              # Active temporary-world sessions.
+  max-provisions: 2            # Simultaneous world preparations.
+  blocks-per-tick: 1000        # Shared paste budget, NOT milliseconds.
+  max-chunks: 64               # Chunks per schematic.
+  max-lease-seconds: 3600      # Cleanup safety limit, NOT a match timer.
+  evacuation-world: ''         # Empty: first non-temporary loaded world.
