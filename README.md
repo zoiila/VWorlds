@@ -90,6 +90,19 @@ The documented target is **VWorld 1.1.0-preview.3**.
 
 This is a **development preview**, not a production-readiness claim. Isolated builds and provider tests were completed, but real-player acceptance, complete client UI checks and production performance profiling remain outstanding.
 
+## Configuration & source examples
+
+Want to explore VWorld beyond the showcase? These **documented examples** demonstrate real configuration keys, the template setup flow and the public-facing integration contract.
+
+| Explore | What's inside |
+| --- | --- |
+| [Example configuration](examples/config.example.yml) | Protected worlds, default settings and schematic capacity limits |
+| [Template setup guide](examples/template-workflow.md) | Actual commands to register, preview, mark and release a schematic |
+| [Developer integration example](examples/consumer-integration.md) | Illustrative `WorldProvider` API usage, ownership responsibilities and source access |
+| [All examples](examples/README.md) | A short index and important safety notes |
+
+**About the source:** The plugin's actual Java implementation and production JARs remain private. The developer reference is an **illustrative code excerpt**, not the plugin source or a ready-to-run minigame adapter. YAML examples are for learning and should not overwrite a running server's saved files.
+
 ## Get VWorld
 
 **VWorld is privately distributed by VACK STUDIO.** For product questions or licensing, use the studio links below. The [historical release notes](RELEASE_NOTES.md) cover an earlier 1.0.0 iteration, not a download for this preview.
